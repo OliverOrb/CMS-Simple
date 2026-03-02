@@ -12,6 +12,20 @@ class MenuHelper
                 'name' => 'Dashboard',
                 'path' => route('dashboard', absolute: false),
             ],
+            [
+                'icon' => 'forms',
+                'name' => 'Forms',
+                'subItems' => [
+                    ['name' => 'Form Elements', 'path' => '/form-elements', 'pro' => false],
+                ],
+            ],
+            [
+                'icon' => 'tables',
+                'name' => 'Tables',
+                'subItems' => [
+                    ['name' => 'Basic Tables', 'path' => '/basic-tables', 'pro' => false]
+                ],
+            ],
         ];
     }
 
