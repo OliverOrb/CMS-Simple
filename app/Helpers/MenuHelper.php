@@ -14,9 +14,18 @@ class MenuHelper
             ],
             [
                 'icon' => 'forms',
-                'name' => 'Forms',
+                'name' => 'Posts',
                 'subItems' => [
-                    ['name' => 'Form Elements', 'path' => '/form-elements', 'pro' => false],
+                    [
+                        'name' => 'All Posts',
+                        'path' => route('posts.index', absolute: false),
+                        'pro' => false
+                    ],
+                    [
+                        'name' => 'Add Post',
+                        'path' => route('posts.index', absolute: false),
+                        'pro' => false
+                    ],
                 ],
             ],
             [
