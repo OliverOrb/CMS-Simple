@@ -13,6 +13,22 @@ class MenuHelper
                 'path' => route('dashboard', absolute: false),
             ],
             [
+                'icon' => 'pages',
+                'name' => 'Pages',
+                'subItems' => [
+                    [
+                        'name' => 'All Pages',
+                        'path' => route('pages.index', absolute: false),
+                        'pro' => false
+                    ],
+                    [
+                        'name' => 'Add Page',
+                        'path' => route('pages.create', absolute: false),
+                        'pro' => false
+                    ],
+                ],
+            ],
+            [
                 'icon' => 'forms',
                 'name' => 'Posts',
                 'subItems' => [
@@ -23,7 +39,7 @@ class MenuHelper
                     ],
                     [
                         'name' => 'Add Post',
-                        'path' => route('posts.index', absolute: false),
+                        'path' => route('posts.create', absolute: false),
                         'pro' => false
                     ],
                 ],
