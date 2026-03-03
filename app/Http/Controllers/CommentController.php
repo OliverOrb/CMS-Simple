@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
+use App\Models\Comment;
 use illuminate\View\View;
 
 class CommentController extends Controller
@@ -13,7 +13,7 @@ class CommentController extends Controller
      */
     public function index(): View
     {
-        $comments = User::all();
+        $comments = Comment::with(['user', 'post'])->latest()->get();
 
         return view('comments.index', compact('comments'));
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
+use App\Models\Post;
 use illuminate\View\View;
 
 class PostController extends Controller
@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index(): View
     {
-        $posts = User::all();
+        $posts = Post::with('user')->latest()->get();
 
         return view('posts.index', compact('posts'));
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
+use App\Models\Page;
 use illuminate\View\View;
 
 class PageController extends Controller
@@ -13,7 +13,7 @@ class PageController extends Controller
      */
     public function index(): View
     {
-        $pages = User::all();
+        $pages = Page::all();
 
         return view('pages.index', compact('pages'));
     }
