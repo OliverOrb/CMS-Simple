@@ -29,11 +29,9 @@ class MenuHelper
                 ],
             ],
             [
-                'icon' => 'tables',
-                'name' => 'Tables',
-                'subItems' => [
-                    ['name' => 'Basic Tables', 'path' => '/basic-tables', 'pro' => false]
-                ],
+                'icon' => 'chat',
+                'name' => 'Comments',
+                'path' => route('comments.index', absolute: false),
             ],
         ];
     }
@@ -42,7 +40,7 @@ class MenuHelper
     {
         return [
             [
-                'icon' => 'charts',
+                'icon' => 'user-profile',
                 'name' => 'User Management',
                 'subItems' => [
                     [
