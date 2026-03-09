@@ -15,13 +15,15 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard', ['title' => 'Dashboard']);
     })->name('dashboard');
 
-    Route::resource('users', UserController::class);
+    Route::middleware(['role:Admin'])->group(function () {
+        Route::resource('users', UserController::class);
+    });
 
-    Route::resource('posts', PostController::class);
-
-    Route::resource('comments', CommentController::class);
-
-    Route::resource('pages', PageController::class);
+    Route::middleware(['permission:edit content'])->group(function () {
+        Route::resource('posts', PostController::class);
+        Route::resource('comments', CommentController::class);
+        Route::resource('pages', PageController::class);
+    });
 });
 
 require __DIR__.'/auth.php';
