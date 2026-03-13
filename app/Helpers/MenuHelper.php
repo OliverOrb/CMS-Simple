@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Auth;
+
 class MenuHelper
 {
     public static function getMainNavItems(): array
@@ -54,8 +56,10 @@ class MenuHelper
 
     public static function getAdministrationItems(): array
     {
-        return [
-            [
+        $items = [];
+
+        if (Auth::user()->can("manage users")) {
+            $items[] = [
                 'icon' => 'user-profile',
                 'name' => 'User Management',
                 'subItems' => [
@@ -65,8 +69,10 @@ class MenuHelper
                         'pro' => false
                     ],
                 ],
-            ],
-        ];
+            ];
+        }
+
+        return $items;
     }
 
     public static function getMenuGroups(): array
