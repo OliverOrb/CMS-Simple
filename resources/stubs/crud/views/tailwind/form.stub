@@ -1,0 +1,8 @@
+<div class="p-6.5">
+    {{form}}
+    <div class="mt-5 flex items-center gap-4">
+        <button type="submit" class="flex justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
+            {{ __('Submit') }}
+        </button>
+    </div>
+</div>

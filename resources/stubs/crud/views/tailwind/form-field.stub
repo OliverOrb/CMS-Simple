@@ -1,0 +1,13 @@
+<div class="mb-4.5">
+    <label for="{{column_snake}}" class="mb-3 block text-sm font-medium text-black dark:text-white">
+        {{title}}
+    </label>
+    <input id="{{column_snake}}" name="{{column}}" type="text"
+        value="{{ old('{{column}}', ${{modelNameLowerCase}}?->{{column}}) }}"
+        placeholder="{{title}}"
+        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+
+    @error('{{column}}')
+        <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+    @enderror
+</div>
