@@ -1,27 +1,61 @@
 <div class="space-y-6">
-    
+    {{-- Title Field --}}
     <div>
-        <x-input-label for="title" :value="__('Title')"/>
-        <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" :value="old('title', $page?->title)" autocomplete="title" placeholder="Title"/>
-        <x-input-error class="mt-2" :messages="$errors->get('title')"/>
-    </div>
-    <div>
-        <x-input-label for="slug" :value="__('Slug')"/>
-        <x-text-input id="slug" name="slug" type="text" class="mt-1 block w-full" :value="old('slug', $page?->slug)" autocomplete="slug" placeholder="Slug"/>
-        <x-input-error class="mt-2" :messages="$errors->get('slug')"/>
-    </div>
-    <div>
-        <x-input-label for="content" :value="__('Content')"/>
-        <x-text-input id="content" name="content" type="text" class="mt-1 block w-full" :value="old('content', $page?->content)" autocomplete="content" placeholder="Content"/>
-        <x-input-error class="mt-2" :messages="$errors->get('content')"/>
-    </div>
-    <div>
-        <x-input-label for="is_published" :value="__('Is Published')"/>
-        <x-text-input id="is_published" name="is_published" type="text" class="mt-1 block w-full" :value="old('is_published', $page?->is_published)" autocomplete="is_published" placeholder="Is Published"/>
-        <x-input-error class="mt-2" :messages="$errors->get('is_published')"/>
+        <label for="title" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
+            {{ __('Title') }}
+        </label>
+        <input id="title" name="title" type="text"
+               class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
+               value="{{ old('title', $page?->title) }}"
+               placeholder="{{ __('Title') }}">
+
+        @error('title')
+        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
     </div>
 
-    <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+    {{-- Slug Field --}}
+    <div>
+        <label for="slug" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
+            {{ __('Slug') }}
+        </label>
+        <input id="slug" name="slug" type="text"
+               class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
+               value="{{ old('slug', $page?->slug) }}"
+               placeholder="{{ __('Slug') }}">
+
+        @error('slug')
+        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    {{-- Content Field --}}
+    <div>
+        <label for="content" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
+            {{ __('Content') }}
+        </label>
+        <input id="content" name="content" type="text"
+               class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
+               value="{{ old('content', $page?->content) }}"
+               placeholder="{{ __('Content') }}">
+
+        @error('body')
+        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
+    </div>
+
+    {{-- Is Published Field --}}
+    <div>
+        <label for="is_published" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
+            {{ __('Is Published') }}
+        </label>
+        <input id="is_published" name="is_published" type="text"
+               class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
+               value="{{ old('is_published', $page?->is_published) }}"
+               placeholder="{{ __('Is Published') }}">
+
+        @error('image')
+        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+        @enderror
     </div>
 </div>

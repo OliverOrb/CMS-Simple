@@ -1,54 +1,80 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $page->name ?? __('Show') . " " . __('Page') }}
-        </h2>
-    </x-slot>
+    <x-common.page-breadcrumb pageTitle="Page Details" />
 
-    <div class="py-12">
-        <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="w-full">
-                    <div class="sm:flex sm:items-center">
-                        <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Show') }} Page</h1>
-                            <p class="mt-2 text-sm text-gray-700">Details of {{ __('Page') }}.</p>
-                        </div>
-                        <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('pages.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
-                        </div>
+    <div class="space-y-6">
+        <div class="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            {{-- Card Header --}}
+            <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
+                <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+                    {{ __('View Post') }}
+                </h3>
+                <a href="{{ route('pages.index') }}"
+                   class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
+                    Back to List
+                </a>
+            </div>
+
+            {{-- Card Body --}}
+            <div class="p-6">
+                <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+
+                    {{-- Title Section --}}
+                    <div class="sm:col-span-2">
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Title</p>
+                        <p class="mt-1 text-lg font-semibold text-gray-800 dark:text-white/90">{{ $page->title }}</p>
                     </div>
 
-                    <div class="flow-root">
-                        <div class="mt-8 overflow-x-auto">
-                            <div class="inline-block min-w-full py-2 align-middle">
-                                <div class="mt-6 border-t border-gray-100">
-                                    <dl class="divide-y divide-gray-100">
+                    {{-- Author/User ID --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author ID</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->user_id }}</p>
+                    </div>
 
-                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Title</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $page->title }}</dd>
-                                </div>
-                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Slug</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $page->slug }}</dd>
-                                </div>
-                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Content</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $page->content }}</dd>
-                                </div>
-                                <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Is Published</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $page->is_published }}</dd>
-                                </div>
+                    {{-- Slug --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->slug }}</p>
+                    </div>
 
-                                    </dl>
-                                </div>
+                    {{-- Image Preview --}}
+                    <div class="sm:col-span-2">
+                        <p class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Featured Image</p>
+                        @if($page->image)
+                            <div class="relative h-48 w-full max-w-md overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+                                <img src="{{ asset('storage/' . $page->image) }}" class="h-full w-full object-cover" alt="Post Image">
                             </div>
+                        @else
+                            <div class="flex h-32 w-full max-w-md items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/50">
+                                <p class="text-sm text-gray-400">No image uploaded</p>
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- Body/Content --}}
+                    <div class="sm:col-span-2">
+                        <p class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Content</p>
+                        <div class="prose prose-sm max-w-none rounded-lg border border-gray-100 bg-gray-50/50 p-4 dark:border-gray-800 dark:bg-white/[0.02] dark:text-gray-300">
+                            {!! nl2br(e($page->body)) !!}
                         </div>
                     </div>
+                </div>
+
+                {{-- Footer Actions --}}
+                <div class="mt-8 flex items-center gap-3 border-t border-gray-100 pt-6 dark:border-gray-800">
+                    <a href="{{ route('pages.edit', $page->id) }}"
+                       class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600">
+                        Edit Page
+                    </a>
+
+                    <form action="{{ route('pages.destroy', $page->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this page?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="inline-flex items-center justify-center rounded-lg border border-red-200 bg-white px-4 py-2.5 text-sm font-medium text-red-600 shadow-theme-xs transition hover:bg-red-50 dark:border-red-900/30 dark:bg-gray-800 dark:text-red-500 dark:hover:bg-red-500/10">
+                            Delete Page
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
