@@ -1,23 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-common.page-breadcrumb pageTitle="{{ __('Show') }} {{modelTitle}}" />
+    <x-common.page-breadcrumb pageTitle="{{modelTitle}} {{ __('Details') }}" />
 
     <div class="space-y-6">
         <div class="rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-            <div class="border-b border-gray-200 px-6 py-4 dark:border-gray-800 flex items-center justify-between">
+            <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
                 <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
-                    {{ __('Details of') }} {{modelTitle}}
+                    {{ __('View') }} {{modelTitle}}
                 </h3>
-                <a href="{{ route('{{modelRoute}}.index') }}" class="bg-brand-500 hover:bg-brand-600 rounded-lg px-4 py-2 text-sm font-medium text-white">
-                    {{ __('Back') }}
+                <a href="{{ route('{{modelRoute}}.index') }}"
+                   class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
+                    {{ __('Back to List') }}
                 </a>
             </div>
 
             <div class="p-6">
-                <dl class="divide-y divide-gray-100 dark:divide-gray-800">
+                <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     {{viewRows}}
-                </dl>
+                </div>
+
+                <div class="mt-8 flex items-center gap-3 border-t border-gray-100 pt-6 dark:border-gray-800">
+                    <a href="{{ route('{{modelRoute}}.edit', ${{modelNameLowerCase}}->id) }}"
+                       class="inline-flex items-center justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white shadow-theme-xs transition hover:bg-brand-600">
+                        {{ __('Edit') }}
+                    </a>
+                    <form action="{{ route('{{modelRoute}}.destroy', ${{modelNameLowerCase}}->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="inline-flex items-center justify-center rounded-lg border border-red-200 bg-white px-4 py-2.5 text-sm font-medium text-red-600 shadow-theme-xs transition hover:bg-red-50 dark:border-red-900/30 dark:bg-gray-800 dark:text-red-500 dark:hover:bg-red-500/10">
+                            {{ __('Delete') }}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -1,8 +1,13 @@
-<div class="mt-4">
-    <x-forms.input
-        label="{{title}}"
-        name="{{column}}"
-        :value="old('{{column}}', ${{modelNameLowerCase}}?->{{column}})"
-        placeholder="{{title}}"
-    />
+<div>
+    <label for="{{column}}" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
+        {{ __('{{title}}') }}
+    </label>
+    <input id="{{column}}" name="{{column}}" type="text"
+           class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
+           value="{{ old('{{column}}', ${{modelNameLowerCase}}?->{{column}}) }}"
+           placeholder="{{ __('{{title}}') }}">
+
+    @error('{{column}}')
+    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+    @enderror
 </div>
