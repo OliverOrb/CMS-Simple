@@ -23,6 +23,9 @@
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Email</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Role</p>
+                        </th>
+                        <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Created At</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
@@ -38,6 +41,17 @@
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $user->email }}</p>
+                            </td>
+                            <td class="px-5 py-4 sm:px-6">
+                                @if($user->getRoleNames()->isNotEmpty())
+                                    <span class="inline-flex rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-700 ring-1 ring-inset ring-brand-600/20 dark:bg-brand-500/10 dark:text-brand-400 dark:ring-brand-500/20">
+                                        {{ $user->getRoleNames()->first() }}
+                                    </span>
+                                @else
+                                    <span class="inline-flex rounded-full bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 dark:bg-gray-400/10 dark:text-gray-400 dark:ring-gray-400/20">
+                                        User
+                                    </span>
+                                @endif
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $user->created_at }}</p>

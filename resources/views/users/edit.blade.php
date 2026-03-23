@@ -23,12 +23,20 @@
                     <x-forms.input label="Email" name="email" :value="$user->email" required />
                 </div>
 
+                <div class="mt-4">
+                    <x-forms.input
+                        label="Role (Type 'Admin', 'Editor', or leave blank)"
+                        name="role"
+                        :value="$userRole"
+                    />
+                </div>
+
                 <div class="mt-4 w-full px-2.5">
                     <div class="mt-1 flex items-center gap-3">
                         <button type="submit" class="bg-brand-500 hover:bg-brand-600 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-white">
                             Update User
                         </button>
-    
+
                         <a href="{{ route('users.index') }}"
                             class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
                             Cancel
