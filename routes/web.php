@@ -19,7 +19,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class);
     });
 
-    Route::middleware(['permission:edit content'])->group(function () {
+    Route::middleware([])->group(function () {
         Route::resource('posts', PostController::class);
         Route::resource('comments', CommentController::class);
         Route::resource('pages', PageController::class);
