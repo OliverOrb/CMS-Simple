@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -14,11 +15,15 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
-        $posts = Post::paginate();
+        // Add `with('user')` so it grabs the author info all at once!
+        $posts = Post::with('user')->latest()->paginate(10);
 
-        return view('post.index', compact('posts'))
+        // This is necessary to make your `{{ ++$i }}` logic work in the blade file
+        $i = (request()->input('page', 1) - 1) * 10;
+
+        return view('post.index', compact('posts', 'i'))
             ->with('i', ($request->input('page', 1) - 1) * $posts->perPage());
     }
 
@@ -35,12 +40,25 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PostRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        Post::create($request->validated());
+        // 1. Validate what the user actually typed in the form
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
 
-        return Redirect::route('posts.index')
-            ->with('success', 'Post created successfully.');
+        // 2. The User ID: Assign the currently logged-in user
+        $validated['user_id'] = auth()->id();
+
+        // 3. The Slug: Generate it automatically from the title they typed
+        $validated['slug'] = Str::slug($validated['title']);
+
+        // 4. Save to database (The ID is generated automatically here!)
+        Post::create($validated);
+
+        return redirect()->route('posts.index')
+            ->with('success', 'Post created successfully!');
     }
 
     /**
