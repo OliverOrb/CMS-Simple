@@ -20,8 +20,7 @@
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">No</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Author
-                                ID</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Author</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Title</p>
@@ -44,7 +43,7 @@
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ ++$i }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->user_id }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->user->name ?? 'Unknown' }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-700 font-medium text-theme-sm dark:text-gray-200">{{ $post->title }}</p>
