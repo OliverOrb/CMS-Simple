@@ -14,21 +14,6 @@
         @enderror
     </div>
 
-    {{-- Slug Field --}}
-    <div>
-        <label for="slug" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
-            {{ __('Slug') }}
-        </label>
-        <input id="slug" name="slug" type="text"
-               class="w-full rounded-lg border border-gray-200 bg-transparent px-5 py-3 font-medium text-gray-800 outline-none transition focus:border-brand-500 active:border-brand-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-white/90"
-               value="{{ old('slug', $page?->slug) }}"
-               placeholder="{{ __('Slug') }}">
-
-        @error('slug')
-        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-        @enderror
-    </div>
-
     {{-- Content Field --}}
     <div>
         <label for="content" class="mb-3 block text-sm font-medium text-gray-800 dark:text-white/90">
