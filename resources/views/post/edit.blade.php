@@ -11,7 +11,7 @@
                 </h3>
             </div>
 
-            <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="p-6">
+            <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="p-6">
                 @csrf
                 @method('PATCH')
 

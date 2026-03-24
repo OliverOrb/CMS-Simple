@@ -83,11 +83,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(Request $request, Post $post) // <-- Change PostRequest to Request here
     {
+        // 1. Check if they are allowed to edit
         Gate::authorize('update', $post);
 
-        $post->update($request->validated());
+        // 2. Validate the incoming data exactly like you did in the store() method
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+
+        // 3. Re-generate the slug in case they changed the title!
+        $validated['slug'] = Str::slug($validated['title']);
+
+        // 4. Update the database
+        $post->update($validated);
 
         return Redirect::route('posts.index')
             ->with('success', 'Post updated successfully');
