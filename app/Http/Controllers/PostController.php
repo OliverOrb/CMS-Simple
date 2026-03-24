@@ -64,27 +64,23 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): View
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-
         return view('post.show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): View
+    public function edit(Post $post)
     {
-        $post = Post::find($id);
-
         return view('post.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(PostRequest $request, Post $post): RedirectResponse
+    public function update(PostRequest $request, Post $post)
     {
         $post->update($request->validated());
 
@@ -92,9 +88,9 @@ class PostController extends Controller
             ->with('success', 'Post updated successfully');
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(Post $post)
     {
-        Post::find($id)->delete();
+        $post->delete();
 
         return Redirect::route('posts.index')
             ->with('success', 'Post deleted successfully');

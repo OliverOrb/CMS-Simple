@@ -62,7 +62,7 @@
                             <td class="px-5 py-4 sm:px-6 text-right">
                                 <div class="flex items-center justify-end gap-2">
                                     {{-- Show Button --}}
-                                    <a href="{{ route('posts.show', $post->id) }}"
+                                    <a href="{{ route('posts.show', $post) }}"
                                        class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -74,7 +74,7 @@
                                     </a>
 
                                     {{-- Edit Button --}}
-                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                    <a href="{{ route('posts.edit', $post) }}"
                                        class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -85,7 +85,7 @@
                                     </a>
 
                                     {{-- Delete Button --}}
-                                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline">
+                                    <form action="{{ route('posts.destroy', $post) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"

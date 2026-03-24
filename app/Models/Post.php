@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -41,7 +41,7 @@ class Post extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -49,5 +49,12 @@ class Post extends Model
     {
         return $this->hasMany(\App\Models\Comment::class, 'id', 'post_id');
     }
-    
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }
