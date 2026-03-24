@@ -17,7 +17,7 @@
                     <thead>
                     <tr class="border-b border-gray-100 dark:border-gray-800">
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">No</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">№</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Author</p>
@@ -40,7 +40,7 @@
                     @forelse ($posts as $post)
                         <tr class="hover:bg-gray-50 dark:hover:bg-white/[0.01] transition-colors">
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ ++$i }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $posts->total() - $posts->firstItem() - $loop->index + 1 }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->user->name ?? 'Unknown' }}</p>
