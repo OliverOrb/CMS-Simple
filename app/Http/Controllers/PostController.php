@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -74,6 +75,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        Gate::authorize('update', $post);
+
         return view('post.edit', compact('post'));
     }
 
@@ -82,6 +85,8 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
+        Gate::authorize('update', $post);
+
         $post->update($request->validated());
 
         return Redirect::route('posts.index')
@@ -90,6 +95,8 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        Gate::authorize('delete', $post);
+
         $post->delete();
 
         return Redirect::route('posts.index')
