@@ -8,7 +8,7 @@
             {{-- Card Header --}}
             <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
                 <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
-                    {{ __('View Post') }}
+                    {{ __('View Pages') }}
                 </h3>
                 <a href="{{ route('pages.index') }}"
                    class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
@@ -28,7 +28,7 @@
 
                     {{-- Author/User ID --}}
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author ID</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Page Number</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->user_id }}</p>
                     </div>
 
@@ -36,20 +36,6 @@
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->slug }}</p>
-                    </div>
-
-                    {{-- Image Preview --}}
-                    <div class="sm:col-span-2">
-                        <p class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Featured Image</p>
-                        @if($page->image)
-                            <div class="relative h-48 w-full max-w-md overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-                                <img src="{{ asset('storage/' . $page->image) }}" class="h-full w-full object-cover" alt="Post Image">
-                            </div>
-                        @else
-                            <div class="flex h-32 w-full max-w-md items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/50">
-                                <p class="text-sm text-gray-400">No image uploaded</p>
-                            </div>
-                        @endif
                     </div>
 
                     {{-- Body/Content --}}
