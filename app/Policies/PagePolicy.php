@@ -37,8 +37,8 @@ class PagePolicy
      */
     public function update(User $user, Page $page): bool
     {
-        // True if they wrote it, OR if they are an Admin
-        return $user->id === $page->user_id || $user->can('manage users');
+        // True if they wrote it, OR if they are an Admin/Editor
+        return $user->id === $page->user_id || $user->hasAnyRole(['Admin', 'Editor']);
     }
 
     /**
@@ -46,7 +46,7 @@ class PagePolicy
      */
     public function delete(User $user, Page $page): bool
     {
-        // True if they wrote it, OR if they are an Admin
-        return $user->id === $page->user_id || $user->can('manage users');
+        // True if they wrote it, OR if they are an Admin/Editor
+        return $user->id === $page->user_id || $user->hasAnyRole(['Admin', 'Editor']);
     }
 }
