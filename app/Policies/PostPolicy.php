@@ -37,8 +37,8 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        // True if they wrote it, OR if they are an Admin
-        return $user->id === $post->user_id || $user->can('manage users');
+        // True if they wrote it, OR if they are an Admin/Editor
+        return $user->id === $post->user_id || $user->hasAnyRole(['Admin', 'Editor']);
     }
 
     /**
@@ -46,7 +46,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        // True if they wrote it, OR if they are an Admin
-        return $user->id === $post->user_id || $user->can('manage users');
+        // True if they wrote it, OR if they are an Admin/Editor
+        return $user->id === $post->user_id || $user->hasAnyRole(['Admin', 'Editor']);
     }
 }
