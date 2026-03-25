@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
  * Class Page
  *
  * @property $id
+ * @property $user_id
  * @property $title
  * @property $slug
- * @property $content
- * @property $is_published
+ * @property $body
  * @property $created_at
  * @property $updated_at
  *
+ * @property User $user
+ * @property Comment[] $comments
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -28,7 +30,7 @@ class Page extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['title', 'slug', 'content', 'is_published'];
+    protected $fillable = ['title', 'slug', 'body', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
