@@ -19,11 +19,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class);
     });
 
+    Route::middleware(['permission:edit content'])->group(function () {
+        Route::resource('pages', PageController::class);
+    });
+
     Route::middleware([])->group(function () {
         Route::resource('posts', PostController::class);
         Route::resource('comments', CommentController::class);
-        Route::resource('pages', PageController::class);
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
