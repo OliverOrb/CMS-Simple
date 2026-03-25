@@ -28,7 +28,7 @@
 
                     {{-- Author/User ID --}}
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author ID</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Post Number</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->user_id }}</p>
                     </div>
 
@@ -36,20 +36,6 @@
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->slug }}</p>
-                    </div>
-
-                    {{-- Image Preview --}}
-                    <div class="sm:col-span-2">
-                        <p class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Featured Image</p>
-                        @if($post->image)
-                            <div class="relative h-48 w-full max-w-md overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-                                <img src="{{ asset('storage/' . $post->image) }}" class="h-full w-full object-cover" alt="Post Image">
-                            </div>
-                        @else
-                            <div class="flex h-32 w-full max-w-md items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-800/50">
-                                <p class="text-sm text-gray-400">No image uploaded</p>
-                            </div>
-                        @endif
                     </div>
 
                     {{-- Body/Content --}}
