@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property $title
  * @property $slug
  * @property $body
- * @property $image
  * @property $created_at
  * @property $updated_at
  *
@@ -31,7 +30,7 @@ class Post extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['user_id', 'title', 'slug', 'body', 'image'];
+    protected $fillable = ['user_id', 'title', 'slug', 'body'];
 
 
     /**

@@ -28,9 +28,6 @@
                         <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Slug</p>
                         </th>
-                        <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Image</p>
-                        </th>
                         <th class="px-5 py-3 text-right sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Actions</p>
                         </th>
@@ -50,14 +47,6 @@
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->slug }}</p>
-                            </td>
-                            <td class="px-5 py-4 sm:px-6">
-                                @if($post->image)
-                                    <img src="{{ asset('storage/' . $post->image) }}"
-                                         class="h-10 w-10 rounded-md object-cover" alt="Post Image">
-                                @else
-                                    <span class="text-gray-400 italic text-xs">No image</span>
-                                @endif
                             </td>
                             <td class="px-5 py-4 sm:px-6 text-right">
                                 <div class="flex items-center justify-end gap-2">

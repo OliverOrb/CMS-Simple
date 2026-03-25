@@ -28,9 +28,6 @@
                         <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Slug</p>
                         </th>
-                        <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Image</p>
-                        </th>
                         <th class="px-5 py-3 text-right sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Actions</p>
                         </th>
@@ -51,14 +48,6 @@
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $page->slug }}</p>
                             </td>
-                            <td class="px-5 py-4 sm:px-6">
-                                @if($page->image)
-                                    <img src="{{ asset('storage/' . $page->image) }}"
-                                         class="h-10 w-10 rounded-md object-cover" alt="Post Image">
-                                @else
-                                    <span class="text-gray-400 italic text-xs">No image</span>
-                                @endif
-                            </td>
                             <td class="px-5 py-4 sm:px-6 text-right">
                                 <div class="flex items-center justify-end gap-2">
                                     {{-- Show Button --}}
@@ -73,7 +62,7 @@
                                         </svg>
                                     </a>
 
-                                    @if(auth()->id() === $page->user_id || auth()->user()->can('manage users'))
+                                    @if(auth()->id() === $page->user_id || auth()->user()->hasAnyRole(['Admin', 'Editor']))
                                         {{-- Edit Button --}}
                                         <a href="{{ route('pages.edit', $page) }}"
                                            class="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-theme-xs transition hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
