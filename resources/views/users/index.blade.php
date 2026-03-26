@@ -17,19 +17,22 @@
                     <thead>
                     <tr class="border-b border-gray-100 dark:border-gray-800">
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Name</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">NAME</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Email</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">EMAIL</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Role</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ROLE</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Created At</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">TIME CREATED</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Updated At</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">LAST UPDATED</p>
+                        </th>
+                        <th class="px-5 py-3 text-left sm:px-6">
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">ACTION</p>
                         </th>
                     </tr>
                     </thead>
