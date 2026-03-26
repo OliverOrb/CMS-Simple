@@ -26,16 +26,32 @@
                         <p class="mt-1 text-lg font-semibold text-gray-800 dark:text-white/90">{{ $post->title }}</p>
                     </div>
 
-                    {{-- Author/User ID --}}
+                    {{-- Author --}}
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Post Number</p>
-                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->user_id }}</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->user->name ?? 'Unknown' }}</p>
                     </div>
 
                     {{-- Slug --}}
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->slug }}</p>
+                    </div>
+
+                    {{-- Created At --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Created At</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">
+                            {{ $post->created_at->format('F j, Y \a\t g:i A') }}
+                        </p>
+                    </div>
+
+                    {{-- Updated At --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Last Updated</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">
+                            {{ $post->updated_at->diffForHumans() }}
+                        </p>
                     </div>
 
                     {{-- Body/Content --}}
