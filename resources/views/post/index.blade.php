@@ -42,13 +42,13 @@
                     @forelse ($posts as $post)
                         <tr class="hover:bg-gray-50 dark:hover:bg-white/[0.01] transition-colors">
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $posts->total() - $posts->firstItem() - $loop->index + 1 }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400 hitespace-normal break-words max-w-full">{{ $posts->total() - $posts->firstItem() - $loop->index + 1 }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->user->name ?? 'Unknown' }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400 hitespace-normal break-words max-w-full">{{ Str::limit($post->user->name ?? 'Unknown', 15) }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-700 font-medium text-theme-sm dark:text-gray-200">{{ Str::limit($post->title, 90) }}</p>
+                                <p class="text-gray-700 font-medium text-theme-sm dark:text-gray-200 hitespace-normal break-words max-w-full">{{ Str::limit($post->title, 80) }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">

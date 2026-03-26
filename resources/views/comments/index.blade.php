@@ -17,6 +17,9 @@
                     <thead>
                     <tr class="border-b border-gray-100 dark:border-gray-800">
                         <th class="px-5 py-3 text-left sm:px-6">
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">№</p>
+                        </th>
+                        <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Author</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
@@ -37,25 +40,29 @@
                     @forelse($comments as $comment)
                         <tr class="border-b border-gray-100 dark:border-gray-800">
 
+                            <td class="px-5 py-4 sm:px-6">
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400 hitespace-normal break-words max-w-full">{{ $comments->total() - $comments->firstItem() - $loop->index + 1 }}</p>
+                            </td>
+
                             {{-- Author --}}
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                                    {{ $comment->user->name ?? 'Deleted User' }}
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400 hitespace-normal break-words max-w-full">
+                                    {{ Str::limit($comment->user->name ?? 'Deleted User', 15) }}
                                 </p>
                             </td>
 
-                            {{-- Comment Snippet (Limits to 50 characters) --}}
+                            {{-- Comment Snippet (Limits to 80 characters) --}}
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-800 text-theme-sm font-medium dark:text-white/90">
-                                    {{ \Illuminate\Support\Str::limit($comment->body, 100) }}
+                                <p class="text-gray-800 text-theme-sm font-medium dark:text-white/90 hitespace-normal break-words max-w-full">
+                                    {{ Str::limit($comment->body, 70) }}
                                 </p>
                             </td>
 
                             {{-- Link to the Post --}}
                             <td class="px-5 py-4 sm:px-6">
                                 @if($comment->post)
-                                    <a href="{{ route('posts.show', $comment->post) }}" class="text-brand-500 text-theme-sm hover:underline">
-                                        {{ \Illuminate\Support\Str::limit($comment->post->title, 30) }}
+                                    <a href="{{ route('posts.show', $comment->post) }}" class="text-brand-500 text-theme-sm hover:underline hitespace-normal break-words max-w-full">
+                                        {{ Str::limit($comment->post->title, 30) }}
                                     </a>
                                 @else
                                     <span class="text-gray-400 text-theme-sm italic">Deleted Post</span>

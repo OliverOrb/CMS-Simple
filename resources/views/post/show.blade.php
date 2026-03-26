@@ -63,7 +63,7 @@
                     <div class="sm:col-span-2">
                         <p class="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Content</p>
                         <div
-                            class="prose prose-sm max-w-none rounded-lg border border-gray-100 bg-gray-50/50 p-4 dark:border-gray-800 dark:bg-white/[0.02] dark:text-gray-300">
+                            class="prose prose-sm max-w-none rounded-lg border border-gray-100 bg-gray-50/50 p-4 dark:border-gray-800 dark:bg-white/[0.02] dark:text-gray-300 hitespace-normal break-words max-w-full">
                             {!! nl2br(e($post->body)) !!}
                         </div>
                     </div>

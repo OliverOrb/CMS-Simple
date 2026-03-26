@@ -37,7 +37,7 @@
                         @if($comment->post)
                             <a href="{{ route('posts.show', $comment->post) }}"
                                class="mt-1 inline-block text-theme-sm text-brand-500 hover:underline">
-                                {{ $comment->post->title }}
+                                {{ Str::limit($comment->post->title, 80) }}
                             </a>
                         @else
                             <p class="mt-1 text-theme-sm text-gray-400 italic">Deleted Post</p>
