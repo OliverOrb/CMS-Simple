@@ -26,16 +26,22 @@
                         <p class="mt-1 text-lg font-semibold text-gray-800 dark:text-white/90">{{ $page->title }}</p>
                     </div>
 
-                    {{-- Author/User ID --}}
+                    {{-- Author --}}
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Page Number</p>
-                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->user_id }}</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->user->name ?? 'Unknown' }}</p>
                     </div>
 
                     {{-- Slug --}}
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->slug }}</p>
+                    </div>
+
+                    {{-- User ID --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Page Number</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $page->user_id }}</p>
                     </div>
 
                     {{-- Body/Content --}}
