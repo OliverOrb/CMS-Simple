@@ -43,9 +43,9 @@
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->slug }}</p>
                     </div>
 
-                    {{-- Created At --}}
+                    {{-- Created On --}}
                     <div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Created At</p>
+                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Time Created</p>
                         <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">
                             {{ $post->created_at->format('F j, Y \a\t g:i A') }}
                         </p>
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                         @empty
-                            <p class="text-sm text-gray-500 dark:text-gray-400">No comments yet. Be the first to start the conversation!</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Comments are shown in the Comments section in the sidebar!</p>
                         @endforelse
                     </div>
                 </div>

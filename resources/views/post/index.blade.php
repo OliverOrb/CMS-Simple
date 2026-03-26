@@ -30,11 +30,11 @@
                         </th>
 
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Created At</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Time Created</p>
                         </th>
 
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Updated At</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Last Updated</p>
                         </th>
 
                         <th class="px-5 py-3 text-right sm:px-6">
