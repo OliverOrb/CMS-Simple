@@ -28,19 +28,19 @@
                     {{-- Title Section --}}
                     <div class="sm:col-span-2">
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Title</p>
-                        <p class="mt-1 text-lg font-semibold text-gray-800 dark:text-white/90">{{ $post->title }}</p>
+                        <p class="mt-1 text-lg font-semibold text-gray-800 dark:text-white/90 hitespace-normal break-words max-w-full">{{ $post->title }}</p>
                     </div>
 
                     {{-- Author --}}
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Author</p>
-                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->user->name ?? 'Unknown' }}</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300 hitespace-normal break-words max-w-full">{{ $post->user->name ?? 'Unknown' }}</p>
                     </div>
 
                     {{-- Slug --}}
                     <div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Slug</p>
-                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300">{{ $post->slug }}</p>
+                        <p class="mt-1 text-theme-sm text-gray-700 dark:text-gray-300 hitespace-normal break-words max-w-full">{{ $post->slug }}</p>
                     </div>
 
                     {{-- Created On --}}
