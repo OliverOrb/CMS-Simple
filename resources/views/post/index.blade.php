@@ -26,10 +26,6 @@
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Title</p>
                         </th>
                         <th class="px-5 py-3 text-left sm:px-6">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Slug</p>
-                        </th>
-
-                        <th class="px-5 py-3 text-left sm:px-6">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 uppercase">Time Created</p>
                         </th>
 
@@ -52,10 +48,7 @@
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->user->name ?? 'Unknown' }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-700 font-medium text-theme-sm dark:text-gray-200">{{ $post->title }}</p>
-                            </td>
-                            <td class="px-5 py-4 sm:px-6">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $post->slug }}</p>
+                                <p class="text-gray-700 font-medium text-theme-sm dark:text-gray-200">{{ Str::limit($post->title, 90) }}</p>
                             </td>
                             <td class="px-5 py-4 sm:px-6">
                                 <p class="text-gray-500 text-theme-sm dark:text-gray-400">

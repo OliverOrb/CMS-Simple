@@ -15,6 +15,14 @@ class CommentController extends Controller
         return view('comments.index', compact('comments'));
     }
 
+    public function show(Comment $comment)
+    {
+        // Load the associated user and post so we can display their names
+        $comment->load(['user', 'post']);
+
+        return view('comments.show', compact('comment'));
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
