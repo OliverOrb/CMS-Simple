@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * Class Page
@@ -23,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
 class Page extends Model
 {
 
+    use HasSlug;
+
     protected $perPage = 20;
 
     /**
@@ -31,6 +35,22 @@ class Page extends Model
      * @var array<int, string>
      */
     protected $fillable = ['title', 'slug', 'body', 'user_id'];
+
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
+    }
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -46,13 +66,5 @@ class Page extends Model
     public function comments()
     {
         return $this->hasMany(\App\Models\Comment::class, 'id', 'page_id');
-    }
-
-    /**
-     * Get the route key for the model.
-     */
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
     }
 }
