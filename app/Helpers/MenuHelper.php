@@ -8,50 +8,55 @@ class MenuHelper
 {
     public static function getMainNavItems(): array
     {
-        return [
-            [
-                'icon' => 'dashboard',
-                'name' => 'Dashboard',
-                'path' => route('dashboard', absolute: false),
-            ],
-            [
-                'icon' => 'pages',
-                'name' => 'Pages',
-                'subItems' => [
-                    [
-                        'name' => 'All Pages',
-                        'path' => route('pages.index', absolute: false),
-                        'pro' => false
-                    ],
-                    [
-                        'name' => 'Add Page',
-                        'path' => route('pages.create', absolute: false),
-                        'pro' => false
-                    ],
-                ],
-            ],
-            [
-                'icon' => 'forms',
-                'name' => 'Posts',
-                'subItems' => [
-                    [
-                        'name' => 'All Posts',
-                        'path' => route('posts.index', absolute: false),
-                        'pro' => false
-                    ],
-                    [
-                        'name' => 'Add Post',
-                        'path' => route('posts.create', absolute: false),
-                        'pro' => false
-                    ],
-                ],
-            ],
-            [
-                'icon' => 'chat',
-                'name' => 'Comments',
-                'path' => route('comments.index', absolute: false),
+        $items = [];
+
+        // 1. Push Dashboard
+        $items[] = [
+            'icon' => 'dashboard',
+            'name' => 'Dashboard',
+            'path' => route('dashboard', absolute: false),
+        ];
+
+        // 2. Build Pages Sub-Items Dynamically
+        // Everyone gets to see "All Pages"
+        $pageSubItems = [
+            ['name' => 'All Pages', 'path' => route('pages.index', absolute: false), 'pro' => false],
+        ];
+
+        // ONLY Admins/Editors get the "Add Page" button added to their list
+        if (Auth::user()->can("edit content")) {
+            $pageSubItems[] = [
+                'name' => 'Add Page',
+                'path' => route('pages.create', absolute: false),
+                'pro' => false
+            ];
+        }
+
+        // Push the Pages menu with its customized sub-items
+        $items[] = [
+            'icon' => 'pages',
+            'name' => 'Pages',
+            'subItems' => $pageSubItems,
+        ];
+
+        // 3. Push Posts (Everyone gets to see both list and add)
+        $items[] = [
+            'icon' => 'forms',
+            'name' => 'Posts',
+            'subItems' => [
+                ['name' => 'All Posts', 'path' => route('posts.index', absolute: false), 'pro' => false],
+                ['name' => 'Add Post', 'path' => route('posts.create', absolute: false), 'pro' => false],
             ],
         ];
+
+        // 4. Push Comments
+        $items[] = [
+            'icon' => 'chat',
+            'name' => 'Comments',
+            'path' => route('comments.index', absolute: false),
+        ];
+
+        return $items;
     }
 
     public static function getAdministrationItems(): array

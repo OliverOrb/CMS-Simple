@@ -20,8 +20,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['permission:edit content'])->group(function () {
-        Route::resource('pages', PageController::class);
+        Route::resource('pages', PageController::class)->except(['index', 'show']);
     });
+
+    Route::resource('pages', PageController::class)->only(['index', 'show']);
 
     Route::middleware([])->group(function () {
         Route::resource('posts', PostController::class);
