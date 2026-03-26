@@ -2,19 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
 use App\Models\Comment;
-use illuminate\View\View;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(): View
+    public function store(Request $request)
     {
-        $comments = Comment::with(['user', 'post'])->latest()->get();
+        $validated = $request->validate([
+            'post_id' => 'required|exists:posts,id',
+            'body' => 'required|string|max:1000',
+        ]);
 
-        return view('comments.index', compact('comments'));
+        $validated['user_id'] = auth()->id();
+
+        Comment::create($validated);
+
+        // back() simply returns the user to the Post page they were just on
+        return back()->with('success', 'Comment posted successfully!');
+    }
+
+    public function destroy(Comment $comment)
+    {
+        // Security: Only the author OR an Admin/Editor can delete a comment
+        if (auth()->id() !== $comment->user_id && !auth()->user()->hasAnyRole(['Admin', 'Editor'])) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $comment->delete();
+
+        return back()->with('success', 'Comment deleted!');
     }
 }

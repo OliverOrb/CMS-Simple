@@ -3,22 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
-    protected $fillable = [
-        'user_id',
-        'post_id',
-        'comment'
-    ];
+    protected $fillable = ['user_id', 'post_id', 'body'];
 
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function post(): BelongsTo
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }

@@ -7,7 +7,7 @@
             @foreach($comments as $comment)
                 <div class="border-b p-4">
                     <p><strong>{{ $comment->user->name }}</strong> said:</p>
-                    <p>{{ $comment->comment }}</p>
+                    <p>{{ $comment->body }}</p>
                     <small>On post: {{ $comment->post->title }}</small>
                 </div>
             @endforeach
