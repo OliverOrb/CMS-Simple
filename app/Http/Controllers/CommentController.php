@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function index()
+    {
+        // Fetch all comments, eager-load the User and Post relationships, and paginate
+        $comments = Comment::with(['user', 'post'])->latest()->paginate(10);
+
+        return view('comments.index', compact('comments'));
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
